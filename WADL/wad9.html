@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Web Page</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1em 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    header img {
+      max-width: 100%;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      margin-top: 1em;
+      animation: rotate 5s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    section {
+      padding: 2em;
+    }
+
+    section h2 {
+      color: #333;
+      text-align: center;
+    }
+
+    section p {
+      line-height: 1.6;
+    }
+
+    .box {
+      background-color: #fff;
+      padding: 1em;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 1em 0;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .box img {
+      max-width: 100%;
+      height: auto;
+    }
+    .box:hover {
+      transform: scale(0.9);
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1em 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Animated Web Page</h1>
+    <img src="image1.jpg" alt="Logo">
+  </header>
+
+  <section>
+    <h2>Welcome to Our Animated Page</h2>
+    <div class="box">
+      <h3>Section 1</h3>
+      <img src="image2.jpg" alt="Image 2">
+      <p>This is some content for section 1.</p>
+    </div>
+    <div class="box">
+      <h3>Section 2</h3>
+      <p>This is some content for section 2.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2023 Your Company Name
+  </footer>
+
+</body>
+</html>

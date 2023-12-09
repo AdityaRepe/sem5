@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 8px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Calculator</h1>
+    <label for="num1">Enter Number 1:</label>
+    <input type="number" id="num1">
+    <br>
+    <label for="num2">Enter Number 2:</label>
+    <input type="number" id="num2">
+    <br>
+    <button onclick="calculate()">Calculate</button>
+    <h2>Results:</h2>
+    <p id="sum">Sum: </p>
+    <p id="difference">Difference: </p>
+    <p id="product">Product: </p>
+    <p id="division">Division: </p>
+    <script>
+        function calculate() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var sum = num1 + num2;
+            var difference = num1 - num2;
+            var product = num1 * num2;
+            var division = num2 !== 0 ? num1 / num2 : 'Cannot divide by zero';
+            document.getElementById('sum').innerText = 'Sum: ' + sum;
+            document.getElementById('difference').innerText = 'Difference: ' + difference;
+            document.getElementById('product').innerText = 'Product: ' + product;
+            document.getElementById('division').innerText = 'Division: ' + division;
+        }
+    </script>
+
+</body>
+</html>
