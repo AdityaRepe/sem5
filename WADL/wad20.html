@@ -7,35 +7,45 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            background-color: #f4f4f4;
             margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        form {
-            width: 300px;
+        .login-container {
+            background-color: #fff;
             padding: 20px;
-            border: 1px solid #ccc;
             border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
 
         input {
             width: 100%;
             padding: 8px;
-            margin-bottom: 16px;
             box-sizing: border-box;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
         button {
             background-color: #4caf50;
-            color: white;
+            color: #fff;
             padding: 10px 15px;
             border: none;
             border-radius: 4px;
@@ -45,33 +55,47 @@
         button:hover {
             background-color: #45a049;
         }
-
-        .error {
-            color: red;
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
-    <form id="loginForm" onsubmit="validateForm(event)">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <p id="error-message" class="error"></p>
-        <button type="submit">Login</button>
-    </form>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="button" onclick="validateForm()">Login</button>
+        </form>
+    </div>
+
     <script>
-        function validateForm(event) {
-            event.preventDefault();
-            var username = document.getElementById("username").value;
-            var password = document.getElementById("password").value;
-            document.getElementById("error-message").innerText = "";
-            if (username.trim() === "" || password.trim() === "") {
-                document.getElementById("error-message").innerText = "All fields are required.";
-                return;
+        function validateForm() {
+            var email = document.getElementById('email').value;
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            if (email === '' || username === '' || password === '') {
+                alert('Please enter all fields');
+            } else if (!isValidEmail(email)) {
+                alert('Please enter a valid email address');
+            } else {
+                alert('Login successful!');
             }
-            alert("Login successful!");
+        }
+        function isValidEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
         }
     </script>
 </body>
