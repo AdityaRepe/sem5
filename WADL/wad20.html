@@ -94,7 +94,7 @@
             }
         }
         function isValidEmail(email) {
-            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var emailRegex = /\S+@\S+\.\S+/;
             return emailRegex.test(email);
         }
     </script>
