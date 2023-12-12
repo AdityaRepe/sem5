@@ -1,9 +1,9 @@
-graph = {
+tree = {
     1: [2, 4],
-    2: [1, 3],
-    3: [2, 4],
-    4: [1, 3, 5],
-    5: [4]
+    2: [3],
+    4: [5],
+    3: [],
+    5: []
 }
 
 visited = set()
@@ -18,10 +18,9 @@ def bfs(node):
     while queue:
         n = queue.pop(0)
         print(n, end=" ")
-        for i in graph[n]:
+        for i in tree[n]:
             if i not in visited:
                 visited.add(i)
                 queue.append(i)
 
 bfs(1)
-
