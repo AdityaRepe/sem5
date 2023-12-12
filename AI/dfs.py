@@ -1,4 +1,4 @@
-graph = {
+tree = {
     1: [2, 3, 4, 5],
     2: [],
     3: [6, 7],
@@ -18,7 +18,7 @@ def dfs(node):
     if node not in visited:
         print(node, end=" ")
         visited.add(node)
-        for i in graph[node]:
+        for i in tree[node]:
             dfs(i)
 
 
