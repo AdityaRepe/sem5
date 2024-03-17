@@ -1,0 +1,61 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <form method="post" action="/success">
+            <h1>Contact Now</h1>
+            <input type="text" name="name" placeholder="Name"/>
+            <input type="email" name="email" placeholder="Email"/>
+            <button type="submit">Send Message</button>
+        </form>
+    </main>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <form id="contactForm" method="post" action="/success">
+            <h1>Contact Now</h1>
+            <input type="text" name="name" id="name" placeholder="Name"/>
+            <input type="email" name="email" id="email" placeholder="Email"/>
+            <button type="button" onclick="submitForm()">Send Message</button>
+        </form>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        function submitForm() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var secretKey = 'aXb5$C8d#E@FgH2i'; // Example random secret key
+
+            // Encrypt the data
+            var encryptedName = CryptoJS.AES.encrypt(name, 'secret key').toString();
+            var encryptedEmail = CryptoJS.AES.encrypt(email, 'secret key').toString();
+
+            // Assign encrypted values to form fields
+            document.getElementById('name').value = encryptedName;
+            document.getElementById('email').value = encryptedEmail;
+
+            // Submit the form
+            document.getElementById('contactForm').submit();
+        }
+    </script>
+</body>
+</html>
