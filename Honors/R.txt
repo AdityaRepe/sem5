@@ -1,0 +1,68 @@
+# Install required packages
+install.packages(c("igraph", "ggraph", "tidygraph"))
+
+# Load libraries
+library(igraph)
+library(ggraph)
+library(tidygraph)
+
+# Create an edge list
+edges <- data.frame(
+  from = c("A", "A", "B", "C", "D", "E", "F", "G"),
+  to = c("B", "C", "C", "D", "E", "F", "G", "A")
+)
+
+# Create a graph object
+graph <- graph_from_data_frame(edges, directed = TRUE)
+
+# ---- Descriptive Analysis ----
+# Basic properties
+cat("Graph Summary:\n")
+print(summary(graph))
+cat("\nNumber of Nodes: ", vcount(graph), "\n")
+cat("Number of Edges: ", ecount(graph), "\n")
+cat("Is Directed: ", is_directed(graph), "\n")
+
+# Calculate network metrics
+cat("\nNode Degrees:\n")
+print(degree(graph, mode = "all"))
+
+cat("\nCloseness Centrality:\n")
+print(closeness(graph))
+
+cat("\nBetweenness Centrality:\n")
+print(betweenness(graph))
+
+cat("\nEigenvector Centrality:\n")
+print(eigen_centrality(graph)$vector)
+
+# Community detection
+clusters <- cluster_louvain(graph)
+cat("\nCommunity Memberships:\n")
+print(membership(clusters))
+
+# Network density
+cat("\nNetwork Density:\n")
+print(edge_density(graph))
+
+# Transitivity (Triadic Closure)
+cat("\nGlobal Transitivity:\n")
+print(transitivity(graph, type = "global"))
+
+# ---- Visualization ----
+# Basic plot using igraph
+plot(
+  graph,
+  vertex.size = 15,
+  vertex.label = V(graph)$name,
+  edge.arrow.size = 0.5,
+  main = "Network Visualization"
+)
+
+# Advanced visualization using ggraph
+ggraph(graph, layout = "fr") +
+  geom_edge_link(aes(alpha = 0.5), color = "gray") +
+  geom_node_point(size = 5, color = "blue") +
+  geom_node_text(aes(label = name), repel = TRUE, size = 5) +
+  theme_minimal() +
+  ggtitle("Advanced Network Visualization")

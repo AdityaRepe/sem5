@@ -1,0 +1,33 @@
+hadoop version 
+
+hadoop fs -ls 
+
+hadoop fs
+
+hadoop fs -df hdfs:/
+
+hadoop fs -count hdfs:/
+
+hadoop fs -ls user
+
+hadoop balancer 
+
+hadoop fs -mkdir /Aditya 
+
+hadoop fs -ls
+
+hadoop fs -mkdir /Aditya/TestFile
+
+gedit Aditya.txt
+
+ls *.txt
+
+hadoop fs -put Aditya.txt /Aditya/TestFile
+
+hadoop fs -ls /Aditya 
+
+hadoop fs –cat /Aditya/TestFile.txt
+
+rm Aditya.txt
+
+hadoop fs -get Aditya/TestFile.txt

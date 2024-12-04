@@ -1,0 +1,45 @@
+gedit pigInput
+
+         1201, Ravi Verma, General Manager, Mumbai, 400101
+         1202, Mangesh Waghle, Plant Manager, Delhi, 100192
+         1203, Srinivas Reddy, Deputy Manager, Kolkata, 770982
+         1204, Mohak Rathod, Senior Analyst, Boston, 809871
+         1205, Lucifer Morningstar, Designer, New York, 666666
+         1206, Munna Bhai, Product Manager, Mumbai, 400067
+         1207, Tony Stark, Senior Software Developer, Mumbai, 400098
+         1208, Jackie Chan, Finance Head, Beijing, 367926
+         1209, Ethan Hunt, Junior Software Developer, Michigan, 897234
+         1210, Bruce Banner, Biotech Engineer, Pune, 456902
+
+hadoop fs -mkdir /Aditya
+
+hadoop fs -ls
+
+hadoop fs -ls /
+
+hadoop fs -ls /Aditya
+
+hadoop fs -put pigInput /Aditya
+
+hadoop fs -ls /Aditya
+
+hadoop fs -cat /Aditya/pigInput
+
+pig
+
+employee = LOAD ‘/Aditya/pigInput’ USING PigStorage(‘,’) AS (id:chararray,fname:chararray,lname:chararray,department:chararray,city:chararray,sal:chararray);	
+
+empidfname = foreach employee generate id,fname;
+
+cityfilt = filter employee by city =='Mumbai’; 
+
+emp_order_bysal = order employee by sal desc; 
+
+STORE emp_order_bysal into ‘/pigresult1’;
+
+cat /pigresult1
+
+describe employee
+
+group_employee = GROUP employee by (city);    dump group_employee
+
